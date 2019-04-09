@@ -157,7 +157,6 @@ public class Base64Utils {
      * @return byte [] io
      */
     public static byte[] decode(String s) {
-
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         try {
             decode(s, bos);
@@ -239,7 +238,6 @@ public class Base64Utils {
         FileOutputStream out = new FileOutputStream(targetPath);
         out.write(buffer);
         out.close();
-
     }
 
 }

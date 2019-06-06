@@ -241,6 +241,34 @@ public class MyResult {
 
     // endregion
 
+    // region get方法区
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    // endregion
+
     private static MyResult init(String path, String status, String description, String code, Object data) {
         MyResult model = new MyResult();
         model.path = path;

@@ -1,4 +1,4 @@
-package pers.cr.toolkit;
+package pers.cr.toolkit.util;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package pers.cr.toolkit;
+package pers.cr.toolkit.util;
 
 import java.io.File;
 import java.text.ParseException;

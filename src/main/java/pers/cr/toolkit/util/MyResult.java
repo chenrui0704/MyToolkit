@@ -8,6 +8,22 @@ package pers.cr.toolkit.util;
  */
 public class MyResult {
 
+    private volatile static MyResult myResult;
+
+    private MyResult() { }
+
+    // 创建实例
+    private synchronized static MyResult createInstance() {
+        if (null == myResult) {
+            synchronized (MyResult.class) {
+                if (myResult == null) {
+                    myResult = new MyResult();
+                }
+            }
+        }
+        return myResult;
+    }
+
     // region 属性区
 
     /**
@@ -270,7 +286,7 @@ public class MyResult {
     // endregion
 
     private static MyResult init(String path, String status, String description, String code, Object data) {
-        MyResult model = new MyResult();
+        MyResult model = createInstance();
         model.path = path;
         model.status = status;
         model.description = description;
@@ -281,7 +297,6 @@ public class MyResult {
 
     // region 构造函数区
 
-    public MyResult() {}
 
     /**
      * 基础的自定义返回,暂不确定是否使用

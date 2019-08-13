@@ -8,7 +8,8 @@ package pers.cr.toolkit.util;
  */
 public class MyResult {
 
-    private volatile static MyResult myResult;
+    // 最先的版本如下，但是感觉不需要这样。
+    /*private volatile static MyResult myResult;
 
     private MyResult() { }
 
@@ -20,6 +21,18 @@ public class MyResult {
                     myResult = new MyResult();
                 }
             }
+        }
+        return myResult;
+    }*/
+
+    private static MyResult myResult;
+
+    private MyResult() { }
+
+    // 创建实例
+    private static MyResult createInstance() {
+        if (null == myResult) {
+            myResult = new MyResult();
         }
         return myResult;
     }

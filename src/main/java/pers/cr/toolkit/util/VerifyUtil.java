@@ -1,47 +1,54 @@
 package pers.cr.toolkit.util;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 
 /**
  * 验证工具类
  *
- * @date 2020-02-24
  * @author Cr
- * */
+ * @date 2020-02-24
+ */
 public class VerifyUtil {
 
-    public static boolean verifyStringIsEmpty(String s) {
-        return s == null || "".equals(s);
+    public static boolean stringIsEmpty(String o) {
+        return isNull(o) || 0 == o.length();
     }
 
-    public static boolean verifyListIsEmpty(List list){
-        return null == list || 0 == list.size();
+    public static boolean stringTrimIsEmpty(String o) {
+        return isNull(o) || 0 == o.trim().length();
     }
 
-    public static boolean verifyMapIsEmpty(Map map){
-        return null == map || 0 == map.size();
+    public static boolean numberIsEmpty(Number o) {
+        return isNull(o) || 0 == o.doubleValue();
     }
 
-    /**
-     *  目前支持 map, list , string 空值验证
-     *  其余类型支持null值验证
-     *
-     * @date 2020-02-24
-     * @author cr
-     * */
-    public static boolean verifyIsEmpty(Object o){
-        if(null == o){
+    public static boolean collectionIsEmpty(Collection o) {
+        return isNull(o) || 0 == o.size();
+    }
+
+    public static boolean mapIsEmpty(Map o) {
+        return isNull(o) || 0 == o.size();
+    }
+
+    public static boolean isEmpty(Object o) {
+        if (isNull(o)) {
             return true;
         }
-        if(o instanceof Map){
-            return verifyMapIsEmpty((Map) o);
-        }else if(o instanceof List){
-            return verifyListIsEmpty((List) o);
-        }else if(o instanceof String){
-            return verifyStringIsEmpty((String) o);
+        if (o instanceof Map) {
+            return 0 == ((Map) o).size();
+        } else if (o instanceof Collection) {
+            return 0 == ((Collection) o).size();
+        } else if (o instanceof String) {
+            return 0 == ((String) o).length();
+        } else if (o instanceof Number) {
+            return 0 == ((Number) o).doubleValue();
         }
         return false;
+    }
+
+    public static boolean isNull(Object o) {
+        return null == o;
     }
 
 }

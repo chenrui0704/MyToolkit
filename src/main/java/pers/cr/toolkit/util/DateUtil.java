@@ -82,4 +82,11 @@ public class DateUtil {
         return new SimpleDateFormat(pattern).format(date);
     }
 
+    /**
+     * 获取之前的时间
+     */
+    public static Date getBeforeDate(Integer beforeDays){
+        return new Date(System.currentTimeMillis() - DAY_TIMESTAMP * beforeDays);
+    }
+
 }
